@@ -1,11 +1,12 @@
 <script>
   import Banner from './components/Banner.vue';
-import BodyComponent from './components/BodyComponent.vue';
-
+  import BodyComponent from './components/BodyComponent.vue';
+  
   export default {
     components:{
     Banner,
-    BodyComponent
+    BodyComponent,
+   
 }
   }
 

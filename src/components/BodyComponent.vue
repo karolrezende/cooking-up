@@ -1,30 +1,39 @@
 <script>
-    export default {
-        data(){
-            return{
-                ingredients: ["Alho", "Orégano", "Manteiga"]
-            }
-        }
+import SelectIngredients from './SelectIngredients.vue';
+import Tag from './Tag.vue';
+export default {
+  data() {
+    return {
+      ingredients: ["Alho", "Orégano", "Manteiga"]
     }
+  },
+  components:{
+    SelectIngredients,
+    Tag
+}
+}
 </script>
 
 <template>
-    <main class="principal-content">
-        <section>
-            <span class="subtitle-lg your-list-text">
-                Sua lista:
-            </span>
-        </section>
+  <main class="principal-content">
+    <section>
+      <span class="subtitle-lg your-list-text">
+        Sua lista:
+      </span>
 
-        <ul v-if="ingredients.length" class="your-list-ingredients">
-            <li v-for="ingredient in ingredients" :key="ingredient" class="ingredients">{{ ingredient }}</li>
-        </ul>
+      <ul v-if="ingredients.length" class="your-list-ingredients">
+        <li v-for="ingredient in ingredients" :key="ingredient" class="ingredients">
+          <Tag :texto="ingredient" active/>
+        </li>
+      </ul>
 
-        <p v-else class="paragraph empty-list">
-          <img src="../images/icones/lista-vazia.svg" alt="">
-          Sua lista está vazia, selecione ingredientes para iniciar.
-        </p>
-    </main>
+      <p v-else class="paragraph empty-list">
+        <img src="../images/icones/lista-vazia.svg" alt="">
+        Sua lista está vazia, selecione ingredientes para iniciar.
+      </p>
+    </section>
+    <SelectIngredients/>
+  </main>
 </template>
 
 <style scoped>
@@ -47,24 +56,13 @@
   margin-bottom: 1.5rem;
 }
 
-.your-list-ingredients{
+.your-list-ingredients {
   display: flex;
   justify-content: center;
   gap: 1rem 1.5rem;
   flex-wrap: wrap;
 }
 
-.ingredients {
-  display: inline-block;
-  border-radius: 0.5rem;
-  min-width: 4.25rem;
-  padding: 0.5rem;
-  text-align: center;
-    transition: 0.2s;
-    color: var(--creme, #FFFAF3);
-  background: var(--coral, #F0633C);
-  font-weight: 700;
-}
 
 .empty-list {
   display: flex;
