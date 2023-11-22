@@ -1,11 +1,12 @@
 <script lang="ts">
-import Tag from './Tag.vue';
+import SelectedTag from './SelectedTag.vue';
 
 export default {
     props: {
         categorie: { type: Object, required: true }
     },
-    components: { Tag }
+    components: { SelectedTag },
+    emits: ['selectedIngredient']
 }
 </script>
 
@@ -19,7 +20,8 @@ export default {
 
         <ul class="categorie__ingredients">
             <li v-for="ingredient in categorie.ingredientes" :key="ingredient">
-                <Tag :texto="ingredient"/>
+              <SelectedTag :texto="ingredient"
+              @selectedIngredient = "$emit('selectedIngredient', $event)"/>
             </li>
         </ul>
     </article>
