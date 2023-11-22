@@ -19,7 +19,7 @@ export default {
         this.selected = !this.selected
 
         if(this.selected){
-            this.$emit('selectedIngredient', this.ingredient)
+            this.$emit('selectedIngredient', this.texto)
         }
        } 
     },

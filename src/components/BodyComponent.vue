@@ -14,6 +14,7 @@ export default {
   methods: {
     onAdd(ingredient2) {
       this.ingredients.push(ingredient2)
+      console.log(ingredient2)
     }
   },
 }
@@ -28,7 +29,7 @@ export default {
 
       <ul v-if="ingredients.length" class="your-list-ingredients">
         <li v-for="ingredient in ingredients" :key="ingredient" class="ingredients">
-          <Tag :texto="ingredient" active @click='onAdd' />
+          <Tag :texto="ingredient" active  />
         </li>
       </ul>
 
@@ -37,7 +38,7 @@ export default {
         Sua lista está vazia, selecione ingredientes para iniciar.
       </p>
     </section>
-    <SelectIngredients />
+    <SelectIngredients @selectedIngredient='onAdd'/>
   </main>
 </template>
 
